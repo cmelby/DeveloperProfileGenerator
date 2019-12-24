@@ -25,7 +25,7 @@ const colors = {
   }
 };
 
-function generateHTML(data) {//data will be response. Build out my own dummy file to look at in the browers to style. Hard code varibles to see layout
+function generateHTML(data) {//data will be response. Build out my own dummy file to look at in the browser to style. Hard code varibles to see layout first.
   return `<!DOCTYPE html>
 <html lang="en">
    <head>
