@@ -3,14 +3,16 @@ const path = require("path");
 const generateHTML = require("./generateHTML");
 const inquirer = require("inquirer");
 const axios = require("axios");
-//returns .fs to file 
-//write file path 
 
 
-const questions = [//Prompt the user for their user name
+
+
+const questions = [
   
 ];
-
+/*inquire.promt takes in an array of questions then with user input will call the info from github API for 
+  users profile
+*/
 inquirer.prompt([
     {
         type: "input",
@@ -22,7 +24,7 @@ inquirer.prompt([
     const queryUrl = `https://api.github.com/users/${username}/repos?per_page=100`;
   
   
-    axios //axios server side ajax call
+    axios //axios call getting all the user data from thier profile....
     .get(queryUrl).then(function(res) {
       console.log(res.data)
     });
@@ -30,22 +32,22 @@ inquirer.prompt([
       return repo.name
    });
  
-   const repoNamesStr = repoNames.join("\n");
+  //  const repoNamesStr = repoNames.join("\n");
 
-   fs.writeFile("repos.txt", repoNamesStr, function(err) {
-     if (err) {
-       throw err;
-     }
+  //  fs.writeFile("repos.txt", repoNamesStr, function(err) {
+  //    if (err) {
+  //      throw err;
+  //    }
 
-     console.log(`Saved ${repoNames.length} repos`);
-   });
+  //    console.log(`Saved ${repoNames.length} repos`);
+  //  });
  });
 
 
 //generate htmlfunction 
 
-function writeToFile(fileName, data) {//
-    fs.writeFileSync(path.join(process.cwd(),fileName), data);
+function writeToFile(fileName, data) {
+    fs.writeFileSync(path.join(process.cwd(),fileName), data);//write file path 
    
 
 }
@@ -56,8 +58,8 @@ function init() {
 
 }
 
-//pull the response from API call from our seperate function 
-//
+
+
 
 
 writeToFile("index.html", generateHTML());
