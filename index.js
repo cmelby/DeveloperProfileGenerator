@@ -4,65 +4,81 @@ const generateHTML = require("./generateHTML");
 const inquirer = require("inquirer");
 const axios = require("axios");
 
-
-
-
 const questions = [
   
 ];
 /*inquire.promt takes in an array of questions then with user input will call the info from github API for 
   users profile
 */
+function promtUser() {
 inquirer.prompt([
     {
         type: "input",
         message: "What is your user name?",
         name: "username",
-    },
-])
-.then(function({username}) {
-    const queryUrl = `https://api.github.com/users/${username}/repos?per_page=100`;
+    }
+
+]).then(function({username}) {
+  const queryUrl = `https://api.github.com/users/${username}/repos?per_page=100`;
   
-  
-    axios //axios call getting all the user data from thier profile....
-    .get(queryUrl).then(function(res) {
-      console.log(res.data)
-    });
-   var repoNamel = res.data.map(function(repo) {
-      return repo.name
+  axios //axios call getting all the user data from thier profile....
+    .get(queryUrl).then(function(response) {
+      // console.log(response.data)
+      const repoNamel = response.data.map(function(owner) {
+      return owner.followers;
    });
  
-  //  const repoNamesStr = repoNames.join("\n");
+   const repoNamesStr = repoNamel.join("\n");
 
-  //  fs.writeFile("repos.txt", repoNamesStr, function(err) {
-  //    if (err) {
-  //      throw err;
-  //    }
+   fs.writeFile("repos.txt", repoNamesStr, function(err) {
+     if (err) {
+       throw err;
+     }
+     console.log(`Saved ${repoNamel.length} repos`);
+     //New Prompt asking the user for their favorite color....
+     var promptTwo = inquirer.prompt({
+       type: 'checkbox',
+       name: 'colors',
+       message: 'What is your favorite color?',
+       choices: [
+         'red',
+         'blue',
+         'yellow'
+       ]
+     }).then(function(answers) {
+          console.log(answers)
+        })
+        .catch(function(err) {
+          console.log(err)
+        });
 
-  //    console.log(`Saved ${repoNames.length} repos`);
-  //  });
+        // // async
+        // promptTwo.ask(function(answers) {
+        // console.log(answers)
+        // });
+
+   });
+
  });
 
+});
 
 //generate htmlfunction 
 
-function writeToFile(fileName, data) {
-    fs.writeFileSync(path.join(process.cwd(),fileName), data);//write file path 
+// function writeToFile(fileName, data) {
+//     fs.writeFileSync(path.join(process.cwd(),fileName), data);//write file path 
    
 
-}
+// }
 
-function init() {
+// function init() {
 
 //inquire.promt takes in an array of questions then with user input well call the API
 
-}
+// }
 
 
-
-
-
-writeToFile("index.html", generateHTML());
+// writeToFile("index.html", generateHTML());
 // init();
 
 

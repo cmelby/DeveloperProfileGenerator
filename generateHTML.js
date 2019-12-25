@@ -25,7 +25,7 @@ const colors = {
   }
 };
 
-function generateHTML(data) {//data will be response. Build out my own dummy file to look at in the browser to style. Hard code varibles to see layout first.
+function generateHTML(data) {
   return `<!DOCTYPE html>
 <html lang="en">
    <head>
@@ -35,7 +35,7 @@ function generateHTML(data) {//data will be response. Build out my own dummy fil
       <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"/>
       <link href="https://fonts.googleapis.com/css?family=BioRhyme|Cabin&display=swap" rel="stylesheet">
       <title>Document</title>
-      <style> 
+      <style>
           @page {
             margin: 0;
           }
@@ -52,7 +52,7 @@ function generateHTML(data) {//data will be response. Build out my own dummy fil
          height: 100%;
          }
          .wrapper {
-         background-color: red;
+         background-color: ${colors[data.color].wrapperBackground};
          padding-top: 100px;
          }
          body {
@@ -94,8 +94,8 @@ function generateHTML(data) {//data will be response. Build out my own dummy fil
          display: flex;
          justify-content: center;
          flex-wrap: wrap;
-         background-color: red;
-         color: red;
+         background-color: ${colors[data.color].headerBackground};
+         color: ${colors[data.color].headerColor};
          padding: 10px;
          width: 95%;
          border-radius: 6px;
@@ -106,7 +106,7 @@ function generateHTML(data) {//data will be response. Build out my own dummy fil
          border-radius: 50%;
          object-fit: cover;
          margin-top: -75px;
-         border: 6px solid red;
+         border: 6px solid ${colors[data.color].photoBorderColor};
          box-shadow: rgba(0, 0, 0, 0.3) 4px 1px 20px 4px;
          }
          .photo-header h1, .photo-header h2 {
@@ -149,8 +149,8 @@ function generateHTML(data) {//data will be response. Build out my own dummy fil
          .card {
            padding: 20px;
            border-radius: 6px;
-           background-color: red;
-           color: red; 
+           background-color: ${colors[data.color].headerBackground};
+           color: ${colors[data.color].headerColor};
            margin: 20px;
          }
          
@@ -171,11 +171,6 @@ function generateHTML(data) {//data will be response. Build out my own dummy fil
           } 
          }
       </style>`
-      //creat a html and css file and reference for layout (develop)
-
-      
         }
 
-        module.exports = generateHTML;
-
-       // ${colors[data.color].photoBorderColor}
+        // module.exports = generateHTML;
