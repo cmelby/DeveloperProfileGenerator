@@ -1,10 +1,13 @@
 
+//Beginning varibles..........
 const fs = require("fs");
 const path = require("path");
 const generateHTML = require("./generateHTML");
 const inquirer = require("inquirer");
 const axios = require("axios");
 
+
+//Questions array used to prompt user.........
 const questions = [
   {
     type: "input",
@@ -22,18 +25,15 @@ const questions = [
     ]
   }
 ];
-/*inquire.promt takes in an array of questions then with user input will call the info from github API for 
-  users profile
-*/
-
+//Prompt user with questions array using inquirer, then based on user name query GitHub for that users data...
 inquirer.prompt(questions).then(function({ username, color }) {
   console.log(username, color);
-  const queryUrl = `https://api.github.com/users/${username}/repos?per_page=100`;
+  const queryUrl = `https://api.github.com/users/${username}`;
 
   axios.get(queryUrl).then(function(response) {
-    console.log(response.data[0].owner)
+    console.log(response)
     fs.writeFile("generat.html", function(){
-      generateHTML(response.data[0], color)
+      generateHTML(response, color)
     })
 
   })
