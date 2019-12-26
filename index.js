@@ -31,7 +31,7 @@ inquirer.prompt(questions).then(function({ username, color }) {
   const queryUrl = `https://api.github.com/users/${username}`;
 
   axios.get(queryUrl).then(function(response) {
-    console.log(response)
+    console.log(response.data.name)
     fs.writeFile("generat.html", function(){
       generateHTML(response, color)
     })
@@ -42,9 +42,14 @@ inquirer.prompt(questions).then(function({ username, color }) {
 
 });
 
-
-
-
+// avatar_url
+// name
+// location
+// public_repos
+// followers
+// starred_url//look into this
+//blog
+//bio
 
 
 

@@ -8,39 +8,40 @@
   <title>Document</title>
 </head>
 <body>
-<!--   
-  <h1>
-    Hellow world.
-    <img src="${data.owner.avatar_url}" alt="">
-  </h1> -->
-      <div class="wrapper">
-        <div class="main"></div>
-          <div class="photo-header">
-            <img class="photo-heager"></img>
-              <h1 class="photo-header">Hi!</h1>
-                <h2 class="photo-header">My name is ${response.data[0].owner}</h2><!--dynamically generate-->
+    <div class="wrapper">
+      <div class="main">
+        <div class="row">
+          <div class="col">
+            <div class="photo-header">
+              <img class="photo-heager" src="${response.data.avatar_url}"></img>
+                <h1 class="photo-header">Hi!</h1>
+                  <h2 class="photo-header">My name is ${response.data.name}</h2><!--dynamically generate-->
                   <div class="row">
                   <nav class="links-nav">
-                  <a class="nav-link" id="location" href="#">Location</a>
-                <a class="nav-link" id="GitHub" href="#">GitHub</a>
-              <a class="nav-link" id="Portfolio" href="#">Portfolio</a>
-            </nav>
-          </div>
-          </div>
-          <div class="container">
-            <div class="workExp-date"><h2>Whatever is in their bio</h2></div>
-            <div class="row">
-              <div class="col">
-                <div class="card"><h2>Public Repositories</h2></div>
-                <div class="card"><h2>GitHub Stars</h2></div>
-                  </div>
-                  <div class="col">
-                  <div class="card"><h2>Followers</h2></div>
-                <div class="card"><h2>Following</h2></div>
-              </div>
+                  <a class="nav-link" id="location" href="#">${response.data.location}</a>
+                  <a class="nav-link" id="GitHub" href="#">${response.data.html_url}</a>
+                <a class="nav-link" id="Portfolio" href="#">${response.data.blog}</a>
+              </nav>
             </div>
           </div>
-        <div class="wrapper"></div>
-      </div>
+        </div>
+        </div>
+        </div>
+        <div class="container">
+          <div class="workExp-date"><h2>${response.data.bio}</h2></div>
+          <div class="row">
+            <div class="col">
+              <div class="card"><h2>${response.data.public_repos}</h2></div>
+              <div class="card"><h2>${response.data.name}</h2></div>
+                </div>
+                <div class="col">
+                <div class="card"><h2>${response.data.followers}</h2></div>
+              <div class="card"><h2>${response.data.following}</h2></div>
+            </div>
+          </div>
+        </div>
+      <div class="wrapper"></div>
+    </div>
+
   </body>
 </html>

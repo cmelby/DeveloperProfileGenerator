@@ -80,6 +80,9 @@
  .photo-header h1 {
  margin-top: 10px;
  }
+ .photo-header h2 { /* Had to add this in for h1 to show*/
+ margin-top: 40px;
+ }
  .links-nav {
  width: 100%;
  text-align: center;
