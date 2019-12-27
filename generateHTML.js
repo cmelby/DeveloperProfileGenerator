@@ -25,7 +25,7 @@ const colors = {
   }
 };
 
-function generateHTML(data, userColor) {
+function generateHTML(response, userColor) {
   return `<!DOCTYPE html>
 <html lang="en">
    <head>
@@ -54,6 +54,7 @@ function generateHTML(data, userColor) {
          .wrapper {
          background-color: ${colors[userColor].wrapperBackground};
          padding-top: 100px;
+         height: 400px;
          }
          body {
          background-color: white;
@@ -116,6 +117,9 @@ function generateHTML(data, userColor) {
          .photo-header h1 {
          margin-top: 10px;
          }
+         .photo-header h2 { 
+          margin-top: 40px;
+          }
          .links-nav {
          width: 100%;
          text-align: center;
@@ -131,6 +135,7 @@ function generateHTML(data, userColor) {
          font-size: .7em;
          text-align: right;
          margin-top: 10px;
+         text-align: center;
          }
          .container {
          padding: 50px;
@@ -171,15 +176,51 @@ function generateHTML(data, userColor) {
           } 
          }
       </style>
-      <body>
-  
-  <h1>
-    Hellow world.
-    <img src="${data.owner.avatar_url}" alt="">
-  </h1>
-  
 
-  </body>
+      <body>
+      <div class="wrapper">
+      <div class="main">
+        <div class="row">
+          <div class="col">
+            <div class="photo-header">
+              <img class="photo-heager" src="${response.data.avatar_url}"></img>
+                <h1 class="photo-header">Hi!</h1>
+                  <h2 class="photo-header">My name is ${response.data.name}</h2>
+                  <div class="row">
+                  <nav class="links-nav">
+                  <a class="nav-link" id="location" href="#">${response.data.location}</a>
+                  <a class="nav-link" id="GitHub" href="#">${response.data.html_url}</a>
+                <a class="nav-link" id="Portfolio" href="#">${response.data.blog}</a>
+              </nav>
+            </div>
+          </div>
+        </div>
+        </div>
+        </div>
+          <div class="container">
+            <div class="workExp-date"><h2>${response.data.bio}</h2></div>
+              <div class="row">
+                <div class="col">
+                  <div class="card"><h2>Public Repositories</h2>
+                      <h4>${response.data.public_repos}</h4>
+                        </div>
+                          <div class="card"><h2>GitHub Stars</h2>
+                          <h4>${response.data.name}</h4>
+                          </div>
+                          </div>
+                        <div class="col">
+                      <div class="card"><h2>Followers</h2>
+                    <h4>${response.data.followers}</h4>
+                  </div>
+                <div class="card"><h2>Following</h2>
+              <h4>${response.data.following}</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    <div class="wrapper"></div>
+  </div>
+</body>
 </html>`
         }
 
