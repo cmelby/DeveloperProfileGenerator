@@ -54,7 +54,7 @@ function generateHTML(response, userColor) {
          .wrapper {
          background-color: ${colors[userColor].wrapperBackground};
          padding-top: 100px;
-         height: 400px;
+         height: 490px;
          }
          body {
          background-color: white;
@@ -130,6 +130,9 @@ function generateHTML(response, userColor) {
          display: inline-block;
          margin: 5px 10px;
          }
+         i {
+           margin-right: 5px;
+         }
          .workExp-date {
          font-style: italic;
          font-size: .7em;
@@ -188,9 +191,9 @@ function generateHTML(response, userColor) {
                   <h2 class="photo-header">My name is ${response.data.name}</h2>
                   <div class="row">
                   <nav class="links-nav">
-                  <a class="nav-link" id="location" href="#">${response.data.location}</a>
-                  <a class="nav-link" id="GitHub" href="#">${response.data.html_url}</a>
-                <a class="nav-link" id="Portfolio" href="#">${response.data.blog}</a>
+                  <a class="nav-link" id="location" href="#"><h6><i class="fas fa-location-arrow"></i>${response.data.location}</h6></a>
+                  <a class="nav-link" id="GitHub" href="${response.data.html_url}"><h6><i class="fab fa-github"></i>GitHub</h6></a>
+                <a class="nav-link" id="Portfolio" href="${response.data.blog}"><h6><i class="fas fa-rss-square"></i>Blog</h6></a>
               </nav>
             </div>
           </div>
