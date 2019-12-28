@@ -115,7 +115,7 @@ function generateHTML(response, userColor) {
          text-align: center;
          }
          .photo-header h1 {
-         margin-top: 10px;
+         margin-top: 20px;
          }
          .photo-header h2 { 
           margin-top: 40px;
@@ -201,21 +201,21 @@ function generateHTML(response, userColor) {
         </div>
         </div>
           <div class="container">
-            <div class="workExp-date"><h2>${response.data.bio}</h2></div>
+            <div class="workExp-date"><h3>${response.data.bio}</h3></div>
               <div class="row">
                 <div class="col">
-                  <div class="card"><h2>Public Repositories</h2>
+                  <div class="card"><h3>Public Repositories</h3>
                       <h4>${response.data.public_repos}</h4>
                         </div>
-                          <div class="card"><h2>GitHub Stars</h2>
-                          <h4>${response.data.name}</h4>
+                          <div class="card"><h3>GitHub Stars</h3>
+                          <h4>${response.data.public_gists}</h4>
                           </div>
                           </div>
                         <div class="col">
-                      <div class="card"><h2>Followers</h2>
+                      <div class="card"><h3>Followers</h3>
                     <h4>${response.data.followers}</h4>
                   </div>
-                <div class="card"><h2>Following</h2>
+                <div class="card"><h3>Following</h3>
               <h4>${response.data.following}</h4>
             </div>
           </div>

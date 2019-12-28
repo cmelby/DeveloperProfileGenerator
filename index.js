@@ -34,15 +34,15 @@ inquirer.prompt(questions).then(function({ username, color }) {
     console.log(response.data)
 
     /* IF we wanted to stay in the browser we would write to file. */
-    fs.writeFile("generat.html", generateHTML(response, color), function(err, result){
-      if (err) console.log('error', err);
-    })
+    // fs.writeFile("generat.html", generateHTML(response, color), function(err, result){
+    //   if (err) console.log('error', err);
+    // })
 
-    //Generating pdf and calling our generateHTML function pushing our axious response into the html file.....
-    // pdf.create(generateHTML(response, color)).toFile('./profile.pdf', function(err, res) {
-    //   if (err) return console.log(err);
-    //   console.log(res); 
-    // });
+  //  Generating pdf and calling our generateHTML function pushing our axious response into the html file.....
+    pdf.create(generateHTML(response, color)).toFile('./profile.pdf', function(err, res) {
+       if (err) return console.log(err);
+        console.log(res); 
+   });
 
 
   })
